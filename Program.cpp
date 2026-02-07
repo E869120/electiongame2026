@@ -224,18 +224,18 @@ void Initialize(int difficulty) {
 	if (difficulty == 2) {
 		usr[0] = Player{ 5, 500, 300, 0, 1 };
 		usr[1] = Player{ 5, 500, 300, 0, 1 };
-		ai_sentakusi = 4;
+		ai_sentakusi = 3;
 		playing_level = U"普通";
 	}
 	if (difficulty == 3) {
-		usr[0] = Player{ 5, 500, 300, 2, 1 };
+		usr[0] = Player{ 5, 500, 300, 1, 1 };
 		usr[1] = Player{ 5, 500, 300, 0, 1 };
 		ai_sentakusi = 10;
 		playing_level = U"難しい";
 	}
 	if (difficulty == 4) {
-		usr[0] = Player{ 5, 500, 300, 0, 1 };
-		usr[1] = Player{ 5, 500, 700, 0, 1 };
+		usr[0] = Player{ 5, 500,  300, 0, 1 };
+		usr[1] = Player{ 5, 500, 1000, 1, 1 };
 		ai_sentakusi = 20;
 		playing_level = U"とても難しい";
 	}
@@ -545,8 +545,8 @@ int AI_Strategy(int day_, int tm_) {
 void OpenVote() {
 	double all_deriv = RandNormal() * 0.005;
 	for (int i = 0; i < 47; i++) {
-		double shijiritsu1 = (approval_rate[i] + all_deriv + RandNormal() * 0.001);
-		double shijiritsu2 = (approval_rate[i] + all_deriv + RandNormal() * 0.010);
+		double shijiritsu1 = max(0.0001, min(0.9999, (approval_rate[i] + all_deriv + RandNormal() * 0.001)));
+		double shijiritsu2 = max(0.0001, min(0.9999, (approval_rate[i] + all_deriv + RandNormal() * 0.010)));
 		double expc_shosenkyoku = 1.0 * giseki[i] * pow(shijiritsu1, 2.7) / (pow(1.0 - shijiritsu1, 2.7) + pow(shijiritsu1, 2.7));
 		actual_shosenkyoku[i][0] = max(0, min(giseki[i], (int)(expc_shosenkyoku + 0.3 * RandNormal() + 0.5)));
 		actual_shosenkyoku[i][1] = giseki[i] - actual_shosenkyoku[i][0];
