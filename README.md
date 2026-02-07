@@ -20,7 +20,7 @@
 
 ## 2. 遊び方
 
-[こちらのリンク](https://e869120.github.io/electiongame2024/index.html)から Web 上で遊ぶことができます。
+[こちらのリンク](https://e869120.github.io/electiongame2026/index.html)から Web 上で遊ぶことができます。
 ゲームには以下の 4 種類の難易度があるので、自分に合った難易度のものをお楽しみください。
 
 * **簡単:** 自分が与党
